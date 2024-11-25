@@ -12,6 +12,6 @@ interface TodoDao {
     fun getAll(): List<TodoEntity>
 
     @Upsert(entity = TodoEntity::class)
-    suspend fun upsertAll(bookEntity: List<TodoEntity>)
+    suspend fun upsertAll(todoList: List<TodoEntity>)
 
 }

@@ -9,6 +9,5 @@ import javax.inject.Inject
 class TodoListUseCase @Inject constructor(
     private val repository: TodoListRepository
 ) {
-    operator fun invoke(): Flow<Resource<List<TodoUI>>> =
-        repository.getTodoList()
+    operator fun invoke(): Flow<Resource<List<TodoUI>>> = repository.getTodoListFromLocal()
 }

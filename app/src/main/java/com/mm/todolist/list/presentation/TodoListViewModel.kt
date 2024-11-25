@@ -5,6 +5,8 @@ import com.mm.todolist.core.data.network.utils.Resource
 import com.mm.todolist.core.presentation.BaseViewModel
 import com.mm.todolist.list.domain.useCase.TodoListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.collectLatest
@@ -35,7 +37,7 @@ class TodoListViewModel @Inject constructor(
                 todoList = emptyList()
             )
         }
-        viewModelScope.launch {
+        CoroutineScope(Dispatchers.IO).launch {
             todoListUseCase().collectLatest { result ->
                 when (result) {
                     is Resource.Error -> {

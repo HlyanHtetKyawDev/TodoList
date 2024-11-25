@@ -57,4 +57,8 @@ class NetworkModule {
         appContext, AppDatabase::class.java, "todo-db"
     ).build()
 
+    @Singleton
+    @Provides
+    fun provideDao(appDatabase: AppDatabase) = appDatabase.todoDao()
+
 }

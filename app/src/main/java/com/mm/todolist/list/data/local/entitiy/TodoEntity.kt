@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
 )
 data class TodoEntity(
     @PrimaryKey val id: Int,
-    @ColumnInfo(name = "user_id") val userId: String?,
+    @ColumnInfo(name = "user_id") val userId: Int?,
     @ColumnInfo(name = "title") val title: String?,
-    @ColumnInfo(name = "completed") val completed: Boolean?
+    @ColumnInfo(name = "completed") val completed: Boolean = false
 )
