@@ -23,7 +23,6 @@ class TodoListRepositoryImpl @Inject constructor(
     override suspend fun getTodoListFromNetwork(): List<TodoDto> =
         networkDataSource.getTodoList()
 
-
     override fun getTodoListFromLocal(): Flow<Resource<List<TodoUI>>> =
         flow {
             emit(Resource.Loading())
