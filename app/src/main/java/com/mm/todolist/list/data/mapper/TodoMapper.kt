@@ -1,6 +1,6 @@
 package com.mm.todolist.list.data.mapper
 
-import com.mm.todolist.list.data.dto.TodoDto
+import com.mm.todolist.list.data.network.dto.TodoDto
 import com.mm.todolist.list.domain.TodoUI
 
 fun TodoDto.toTodoUI() = TodoUI(

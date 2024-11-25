@@ -1,7 +1,7 @@
 package com.mm.todolist.di
 
 import com.mm.todolist.core.data.network.dataSource.NetworkDataSourceImpl
-import com.mm.todolist.list.data.dataSource.TodoListNetworkDataSource
+import com.mm.todolist.list.data.network.dataSource.TodoListNetworkDataSource
 import com.mm.todolist.list.data.repository.TodoListRepositoryImpl
 import com.mm.todolist.list.domain.repository.TodoListRepository
 import dagger.Binds

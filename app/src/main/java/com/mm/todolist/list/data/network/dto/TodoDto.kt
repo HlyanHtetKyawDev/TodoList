@@ -1,4 +1,4 @@
-package com.mm.todolist.list.data.dto
+package com.mm.todolist.list.data.network.dto
 
 data class TodoDto(
     val completed: Boolean,

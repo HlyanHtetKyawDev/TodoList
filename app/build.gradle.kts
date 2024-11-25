@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.daggerHitAndroid)
     alias(libs.plugins.org.jetbrains.kotlin.kapt)
+    alias(libs.plugins.kotlinAndroidKsp)
 }
 
 android {
@@ -75,4 +76,9 @@ dependencies {
     // Testing
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)
+
+    // Room DB
+    implementation(libs.androidx.room.runtime)
+    implementation (libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 }

@@ -1,12 +1,16 @@
 package com.mm.todolist.di
 
+import android.content.Context
+import androidx.room.Room
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.mm.todolist.BuildConfig
 import com.mm.todolist.core.data.network.service.ApiService
+import com.mm.todolist.list.data.local.db.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -22,26 +26,18 @@ class NetworkModule {
     @Provides
     fun providesOkHttpClient(
         httpLoggingInterceptor: HttpLoggingInterceptor,
-    ): OkHttpClient =
-        OkHttpClient
-            .Builder()
-            .addInterceptor(httpLoggingInterceptor)
-            .build()
+    ): OkHttpClient = OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build()
 
     @Singleton
     @Provides
-    fun provideGsonConverter() = GsonBuilder()
-        .setLenient()
-        .create()!!
+    fun provideGsonConverter() = GsonBuilder().setLenient().create()!!
 
 
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient, gSon: Gson): Retrofit = Retrofit.Builder()
-        .addConverterFactory(GsonConverterFactory.create(gSon))
-        .baseUrl(BuildConfig.BASE_URL)
-        .client(okHttpClient)
-        .build()
+    fun provideRetrofit(okHttpClient: OkHttpClient, gSon: Gson): Retrofit =
+        Retrofit.Builder().addConverterFactory(GsonConverterFactory.create(gSon))
+            .baseUrl(BuildConfig.BASE_URL).client(okHttpClient).build()
 
     @Provides
     @Singleton
@@ -51,9 +47,14 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun providesHttpLoggingInterceptor() = HttpLoggingInterceptor()
-        .apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }
+    fun providesHttpLoggingInterceptor() = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
+    }
+
+    @Singleton
+    @Provides
+    fun provideDatabase(@ApplicationContext appContext: Context) = Room.databaseBuilder(
+        appContext, AppDatabase::class.java, "todo-db"
+    ).build()
 
 }

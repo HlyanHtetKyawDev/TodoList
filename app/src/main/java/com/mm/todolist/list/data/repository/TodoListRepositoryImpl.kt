@@ -4,7 +4,7 @@ import android.util.Log
 import com.mm.todolist.core.data.helper.getResultOrThrow
 import com.mm.todolist.core.data.network.exceptions.GeneralException
 import com.mm.todolist.core.data.network.utils.Resource
-import com.mm.todolist.list.data.dataSource.TodoListNetworkDataSource
+import com.mm.todolist.list.data.network.dataSource.TodoListNetworkDataSource
 import com.mm.todolist.list.data.mapper.toTodoUI
 import com.mm.todolist.list.domain.TodoUI
 import com.mm.todolist.list.domain.repository.TodoListRepository

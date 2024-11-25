@@ -16,9 +16,14 @@ mockk = "1.13.8"
 retrofit = "2.9.0"
 loggingInterceptor = "4.9.2"
 org-jetbrains-kotlin-android = "1.9.0"
+kspVersion = "2.0.21-1.0.28"
+roomRuntime = "2.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -50,6 +55,7 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 daggerHitAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }
 org-jetbrains-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "org-jetbrains-kotlin-android" }
+kotlinAndroidKsp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
 
 [bundles]
 compose = [

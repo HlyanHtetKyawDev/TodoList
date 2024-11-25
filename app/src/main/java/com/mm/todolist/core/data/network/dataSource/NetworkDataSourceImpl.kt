@@ -3,8 +3,8 @@ package com.mm.todolist.core.data.network.dataSource
 import com.mm.todolist.core.data.network.exceptions.EmptyResponseException
 import com.mm.todolist.core.data.network.exceptions.FailResponseException
 import com.mm.todolist.core.data.network.service.ApiService
-import com.mm.todolist.list.data.dataSource.TodoListNetworkDataSource
-import com.mm.todolist.list.data.dto.TodoDto
+import com.mm.todolist.list.data.network.dataSource.TodoListNetworkDataSource
+import com.mm.todolist.list.data.network.dto.TodoDto
 import retrofit2.awaitResponse
 import javax.inject.Inject
 
