@@ -1,6 +1,5 @@
 [versions]
 agp = "8.7.2"
-androidxJunit = "1.1.5"
 coreTesting = "2.2.0"
 kotlin = "2.0.0"
 coreKtx = "1.15.0"
@@ -13,17 +12,13 @@ composeBom = "2024.04.01"
 compose-material-icons-extended = "1.7.5"
 hiltAndroid = "2.49"
 hiltNavigationCompose = "1.2.0"
-mockitoCore = "4.11.0"
+mockitoCore = "4.5.1"
 mockitoKotlin = "4.1.0"
-mockk = "1.13.8"
 retrofit = "2.9.0"
 loggingInterceptor = "4.9.2"
 org-jetbrains-kotlin-android = "1.9.0"
 kspVersion = "2.0.21-1.0.28"
 roomRuntime = "2.6.1"
-runner = "1.6.2"
-truth = "1.4.2"
-junitKtx = "1.2.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -31,7 +26,6 @@ androidx-core-testing = { module = "androidx.arch.core:core-testing", version.re
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
-androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
@@ -53,12 +47,9 @@ hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", ve
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
 mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin" }
-mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
-truth = { module = "com.google.truth:truth", version.ref = "truth" }
-androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

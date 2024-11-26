@@ -19,7 +19,7 @@ demonstrate offline capabilities using Room DB and fetch/update operations with 
     - Retrofit for API integration
     - Hilt for dependency injection
     - Room database for local storage
-    - JUnit, Mockito and Truth for testing
+    - JUnit, Mockito for testing
     - Additional third-party libraries as needed
 
 ### Features

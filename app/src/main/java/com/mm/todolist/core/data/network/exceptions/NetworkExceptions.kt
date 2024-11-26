@@ -4,6 +4,6 @@ class FailResponseException(message: String?) : Exception(message ?: "Failed to 
 
 class EmptyResponseException : Exception("Empty response!")
 
-class GeneralException(message: String?) : Exception(message ?: "Something went wrong!")
+class GeneralException(message: String?) : RuntimeException(message ?: "Something went wrong!")
 
 class NoNetworkException(message: String?) : Exception(message ?: "Something went wrong!")

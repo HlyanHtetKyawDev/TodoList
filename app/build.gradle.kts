@@ -71,10 +71,6 @@ dependencies {
     // Network calls
     implementation(libs.bundles.retrofit)
 
-    // Testing
-    testImplementation(libs.mockk)
-    testImplementation(libs.kotlinx.coroutines.test)
-
     // Room DB
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
@@ -85,7 +81,4 @@ dependencies {
     testImplementation(libs.mockito.kotlin)
     testImplementation(libs.androidx.core.testing)
     testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.truth)
-    testImplementation(libs.androidx.junit.ktx)
-    testImplementation(libs.androidx.runner)
 }

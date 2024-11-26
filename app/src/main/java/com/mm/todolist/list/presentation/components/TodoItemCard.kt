@@ -28,9 +28,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mm.todolist.list.domain.TodoUI
+import com.mm.todolist.ui.theme.TodoListTheme
 
 @Composable
 fun TodoItemCard(
@@ -102,4 +104,15 @@ fun TodoItemCard(
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun PreviewTodoItemCard(modifier: Modifier = Modifier) {
+    TodoListTheme {
+        TodoItemCard(
+            item = TodoUI(1, "Test 1", true, "Completed")
+        ) { }
+    }
+
 }
