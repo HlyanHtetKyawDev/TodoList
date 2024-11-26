@@ -4,7 +4,7 @@
 
 This project is a simple TODO list application that fetches data from an external API, stores it
 locally for offline access, and displays it in a user-friendly interface. The app is designed to
-demonstrate offline capabilities using Room DB and fetch/update operations with an API. It also include some test cases for testing.
+demonstrate offline capabilities using Room DB and fetch/update operations with an API. It also includes some test cases for testing.
 
 ### Used Technologies
 
