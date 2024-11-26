@@ -1,14 +1,13 @@
 package com.mm.todolist.list.data.repository
 
-import android.util.Log
 import com.mm.todolist.core.data.helper.getResultOrThrow
 import com.mm.todolist.core.data.network.exceptions.GeneralException
+import com.mm.todolist.core.data.network.exceptions.NoNetworkException
 import com.mm.todolist.core.data.network.utils.Resource
 import com.mm.todolist.list.data.local.dao.TodoDao
 import com.mm.todolist.list.data.mapper.toTodoEntity
 import com.mm.todolist.list.data.mapper.toTodoUI
 import com.mm.todolist.list.data.network.dataSource.TodoListNetworkDataSource
-import com.mm.todolist.list.data.network.dto.TodoDto
 import com.mm.todolist.list.domain.TodoUI
 import com.mm.todolist.list.domain.repository.TodoListRepository
 import kotlinx.coroutines.flow.Flow
@@ -20,26 +19,38 @@ class TodoListRepositoryImpl @Inject constructor(
     private val todoDao: TodoDao
 ) : TodoListRepository {
 
-    override suspend fun getTodoListFromNetwork(): List<TodoDto> =
-        networkDataSource.getTodoList()
-
-    override fun getTodoListFromLocal(): Flow<Resource<List<TodoUI>>> =
+    override fun getTodoListFromNetwork(): Flow<Resource<List<TodoUI>>> =
         flow {
             emit(Resource.Loading())
             try {
                 val data = getResultOrThrow {
-                    todoDao.getAll()
+                    networkDataSource.getTodoList()
                 }
                 if (data.isNotEmpty()) {
                     emit(Resource.Success(data.map { it.toTodoUI() }))
+                    todoDao.upsertAll(data.map { it.toTodoEntity() })
                 } else {
-                    val response = getTodoListFromNetwork().map { it.toTodoEntity() }
-                    todoDao.upsertAll(response)
-                    emit(Resource.Success(response.map { it.toTodoUI() }))
+                    getTodoListFromLocal()
                 }
+            } catch (e: NoNetworkException) {
+                emit(getTodoListFromLocal())
             } catch (e: GeneralException) {
-                Log.e("TodoListRepositoryImpl", "sException: ${e.message}")
                 emit(Resource.Error(if (e.message.isNullOrEmpty()) "Something went wrong" else e.message!!))
             }
         }
+
+    override suspend fun getTodoListFromLocal(): Resource<List<TodoUI>> {
+        return try {
+            val data = getResultOrThrow {
+                todoDao.getAll()
+            }
+            if (data.isNotEmpty()) {
+                Resource.Success(data.map { it.toTodoUI() })
+            } else {
+                Resource.Error("There is no data")
+            }
+        } catch (e: GeneralException) {
+            Resource.Error(if (e.message.isNullOrEmpty()) "Something went wrong" else e.message!!)
+        }
+    }
 }

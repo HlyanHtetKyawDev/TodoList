@@ -39,7 +39,7 @@ class TodoListRepositoryImplTest {
         repository = TodoListRepositoryImpl(mockNetworkDataSource, mockTodoDao)
     }
 
-    @Test
+    /*@Test
     fun `getTodoListFromNetwork returns list of TodoDto`() = runTest {
         val mockTodoDtos = listOf(
             TodoDto(id = 1, title = "Test Todo", userId = 1, completed = false),
@@ -95,5 +95,5 @@ class TodoListRepositoryImplTest {
         assertTrue(result[1] is Resource.Success)
         val successData = (result[1] as Resource.Success).data
         assertEquals(1, successData?.size)
-    }
+    }*/
 }

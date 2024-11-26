@@ -2,6 +2,7 @@ package com.mm.todolist.core.data.helper
 
 import android.util.Log
 import com.mm.todolist.core.data.network.exceptions.GeneralException
+import com.mm.todolist.core.data.network.exceptions.NoNetworkException
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -14,7 +15,7 @@ suspend fun <T> getResultOrThrow(
         throw GeneralException(e.message ?: "Unknown Http error")
     } catch (e: IOException) {
         Log.e("GeneralException", "IO: ${e.stackTraceToString()}")
-        throw GeneralException("No internet connection")
+        throw NoNetworkException("No internet connection")
     } catch (e: Exception) {
         Log.e("GeneralException", "Network exception: ${e.stackTraceToString()}")
         throw GeneralException(e.message ?: "Something went wrong")
